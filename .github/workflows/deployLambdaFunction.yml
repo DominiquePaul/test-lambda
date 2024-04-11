@@ -6,7 +6,7 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Install zip tool
         uses: montudor/action-zip@v1
       - name: Create zip file
