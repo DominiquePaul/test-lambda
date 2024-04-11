@@ -14,9 +14,11 @@ jobs:
       - name: AWS CLI v2
         uses: imehedi/actions-awscli-v2@latest
         with:
-          args: "lambda update-function-code \
-          --function-name arn:aws:lambda:eu-central-1:764118177562:function:sendSlackMessageWhenNewImageIsUploaded \
-          --zip-file fileb://lambda_functions/lambda.zip"
+          args: s3 ls
+        # with:
+        #   args: "lambda update-function-code \
+        #   --function-name arn:aws:lambda:eu-central-1:764118177562:function:sendSlackMessageWhenNewImageIsUploaded \
+        #   --zip-file fileb://lambda_functions/lambda.zip"
         env:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
