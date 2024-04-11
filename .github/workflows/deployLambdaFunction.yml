@@ -12,9 +12,10 @@ jobs:
       - name: Create zip file
         run: cd lambda_functions && zip -r lambda.zip .
       - name: AWS CLI v2
-        uses: imehedi/actions-awscli-v2@latest
-        with:
-          args: s3 ls
+        - name: AWS CLI v2
+          uses: imehedi/actions-awscli-v2@latest
+          with:
+            args: s3 ls
         # with:
         #   args: "lambda update-function-code \
         #   --function-name arn:aws:lambda:eu-central-1:764118177562:function:sendSlackMessageWhenNewImageIsUploaded \
