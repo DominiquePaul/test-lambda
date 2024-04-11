@@ -6,7 +6,8 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Install zip tool
         uses: montudor/action-zip@v1
       - name: Create zip file
@@ -19,7 +20,7 @@ jobs:
           aws-region: eu-central-1
       - name: Update Lambda Function
       run: |
-          aws lambda update-function-code \
-          --function-name arn:aws:lambda:eu-central-1:764118177562:function:sendSlackMessageWhenNewImageIsUploaded \
-          --zip-file fileb://lambda_functions/lambda.zip
+        aws lambda update-function-code \
+        --function-name arn:aws:lambda:eu-central-1:764118177562:function:sendSlackMessageWhenNewImageIsUploaded \
+        --zip-file fileb://lambda_functions/lambda.zip
       
