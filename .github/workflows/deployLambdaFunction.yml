@@ -27,6 +27,8 @@ jobs:
           aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
           docker build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-      - name: Create ECR repository if it does not exist
+      - name: Update Lambda Function with the new image
         run: |
-          aws ecr describe-repositories --repository-names hello-world || aws ecr create-repository --repository-name hello-world --region eu-central-1 --image-scanning-configuration scanOnPush=true --image-tag-mutability MUTABLE
+          aws lambda update-function-code \
+          --function-name arn:aws:lambda:eu-central-1:764118177562:function:dompitest \
+          --image-uri $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG

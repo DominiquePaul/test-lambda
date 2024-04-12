@@ -5,6 +5,7 @@ import cv2
 
 
 def handler(event, context):
+    print("Wink emoji")
     print("Loooool hello")
     print(dir(boto3))
     print(dir(numpy))
