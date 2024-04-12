@@ -31,4 +31,4 @@ jobs:
         run: |
           aws lambda update-function-code \
           --function-name arn:aws:lambda:eu-central-1:764118177562:function:dompitest \
-          --image-uri $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          --image-uri ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
