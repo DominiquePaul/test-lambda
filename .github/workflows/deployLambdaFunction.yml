@@ -28,6 +28,11 @@ jobs:
           docker build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
       - name: Update Lambda Function with the new image
+        env:
+          AWS_REGION: eu-central-1
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: hello-world
+          IMAGE_TAG: latest
         run: |
           aws lambda update-function-code \
           --function-name arn:aws:lambda:eu-central-1:764118177562:function:dompitest \
