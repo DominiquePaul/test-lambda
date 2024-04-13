@@ -8,6 +8,8 @@ COPY requirements.txt ${LAMBDA_TASK_ROOT}
 # Install the specified packages
 RUN pip install -r requirements.txt
 
+COPY pizza.jpg ${LAMBDA_TASK_ROOT}
+
 # Copy function code
 COPY lambda_function.py ${LAMBDA_TASK_ROOT}
 
