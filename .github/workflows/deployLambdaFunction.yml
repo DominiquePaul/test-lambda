@@ -35,6 +35,8 @@ jobs:
           docker build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "Pushed to ECR URL: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+      - name: Echo URL to pushed container
+        run: echo "Container URL: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
       - name: Update Lambda Function with the new image
         env:
           AWS_REGION: eu-central-1
