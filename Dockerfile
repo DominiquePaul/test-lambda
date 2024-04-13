@@ -1,7 +1,7 @@
 FROM public.ecr.aws/lambda/python:3.11
 
-# RUN yum install -y mesa-libGL
-RUN yum install -y libgl1-mesa-glx
+RUN yum install -y mesa-libGL
+# RUN yum install -y libgl1-mesa-glx
 
 
 # Copy requirements.txt
