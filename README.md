@@ -1,15 +1,3 @@
-aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 764118177562.dkr.ecr.eu-central-1.amazonaws.com
-
-docker build --platform linux/arm64 -t dompitest:test1 .
-
-aws ecr create-repository --repository-name hello-world --region eu-central-1 --image-scanning-configuration scanOnPush=true --image-tag-mutability MUTABLE
-
-docker tag dompitest:test1 764118177562.dkr.ecr.eu-central-1.amazonaws.com/hello-world:latest
-
-docker push 764118177562.dkr.ecr.eu-central-1.amazonaws.com/hello-world:latest
-
-
-
 ### Old github action for simple lambda functions
 
 ```
