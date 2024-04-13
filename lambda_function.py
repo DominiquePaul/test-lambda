@@ -4,7 +4,13 @@ from inference_sdk import InferenceHTTPClient
 
 
 def handler(event, context):
-    client = InferenceHTTPClient(api_url="https://detect.roboflow.com",
-                                 api_key=os.environ["ROBOFLOW_API_KEY"])
+    # initialize the client
+    CLIENT = InferenceHTTPClient(
+        api_url="https://detect.roboflow.com",
+        api_key=os.environ["ROBOFLOW_API_KEY"]
+    )
+
+    # infer on a local image
     img_path = "./pizza.jpg"
-    return client.infer(img_path, model_id="pizza-identifier/3")
+    result = CLIENT.infer(img_path, model_id="pizza-identifier/3")
+    return result

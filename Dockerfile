@@ -1,8 +1,6 @@
-FROM public.ecr.aws/lambda/python:3.11
+FROM public.ecr.aws/lambda/python:3.12
 
 RUN yum install -y mesa-libGL
-# RUN yum install -y libgl1-mesa-glx
-
 
 # Copy requirements.txt
 COPY requirements.txt ${LAMBDA_TASK_ROOT}
