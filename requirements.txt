@@ -1,1 +1,1 @@
-inference==0.9.17
+inference==0.7.2
