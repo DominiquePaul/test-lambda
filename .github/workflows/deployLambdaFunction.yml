@@ -43,6 +43,6 @@ jobs:
           IMAGE_TAG: latest
         run: |
           aws lambda update-function-code \
-          --function-name arn:aws:lambda:eu-central-1:764118177562:function:dompitest \
+          --function-name arn:aws:lambda:eu-central-1:764118177562:function:dompi2 \
           --image-uri ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
           echo "Lambda updated with image from ECR URL: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}"
